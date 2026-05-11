@@ -66,7 +66,26 @@ int main(){
         break;
     }
     case 4: {
-        printf("\n\nsorry i dont this how to write..!\n\n");
+            int password;
+    int correctPassword = 123;
+    int i, sucess=0;
+printf("\n\nyou choosed 4: Login Validation (Attempts-based)\n\n");
+    for(i = 1; i <= 3; i++) {
+
+        printf("Enter Password: ");
+        scanf("%d", &password);
+
+        if(password == correctPassword) {
+            printf("Login Allowed\n");
+            sucess =1;
+            break;  }
+        else {
+            printf("Invalid Password\n");
+        }
+    }
+    if(sucess==0)
+    {printf("User Blocked\n");}
+
         break;   
        
     }
