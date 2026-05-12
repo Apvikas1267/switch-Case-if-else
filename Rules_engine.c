@@ -1,156 +1,199 @@
 #include <stdio.h>
 #include <string.h>
-int main(){
-    int choice=0;
-    while(choice!=8){
-        printf("----------------------------------");
-    printf("\n\nThe rule engine contains\n\n");
-    printf("----------------------------------");
-    printf("\n1: Bank Loan Eligibility (Salary & Credit Score)\n2: Electricity Bill Calculation (Unit-based) \n3: Ticket Pricing (Age-based) \n4: Login Validation (Attempts-based) \n5: Password Strength (Length-based) \n6: Simple Discount (Purchase amount) \n7. Weather Advisory(based on temperatutre)\n 8: Exit\n\n ");
-    printf("----------------------------------");
-    printf("\n\nEnter the task you want to perform:\t");
-    scanf("%d",&choice);
-    switch (choice)
-    {
-    case 1:{int sal,credit;
-        printf("\n\nYou choosed 1: Bank Loan Eligibility (Salary & Credit Score)\n\n ");
-        printf("Enter salary and credit :\n");
-    scanf("%d %d",&sal,&credit);
-        if(sal>=50000 && credit>=700){
-            printf("you are approved because your salary and credit is above 50000 and above 700 respectively..!!\n\n");
-        }
-        else if(sal>=30000){
-            printf("you are approved condtionally because your salary is above 30000\n");
 
-        }
-        else{
-            
-            printf("Rejected because your salaray is below 30000 \n");
-        }
-        break;}
-    case 2:{int u,r;
-    printf("\n\nyou choosed 2: Electricity Bill Calculation (Unit-based)\n\n ");
-    printf("Enter the units used: ");
-    scanf("%d",&u);
-    if(u<=100){
-        printf("\n2 rupees per unit\n");
-        r=2*u;
-        printf("%d rupees is the electricity bill\n\n",r);
-        
-    }
-    else if(u>100 && u<=300){
-                printf("\n5 rupees per unit\n");
-        r=5*u;
-        printf("%d rupees is the electricity bill\n\n",r);
-    }
-    else{
-        printf("\n8 rupees per unit\n");
-        r=8*u;
-        printf("%d rupees is the electricity bill\n\n",r);
-    }
-    break;}
-    case 3:{
-        int age;
-        printf("\n\nyou choosed 3: Ticket Pricing (Age-based)\n\n ");
-        printf("Enter the age:\n");
-        scanf("%d",&age);
-        if(age<12){
-            printf("\n\nThe ticket price for the child is 100 rupees \n\n");
-        }
-        else if(age>=12 && age<=60){
-            printf("\n\n The ticket price for the Adult is 200 rupees per person\n\n");
-        }
-        else{
-            printf("\n\n The ticket price for the Senior citizen is is 150 rupees per person\n\n");
-        }
-        break;
-    }
-    case 4: {
-            int password;
-    int correctPassword = 123;
-    int i, sucess=0;
-printf("\n\nyou choosed 4: Login Validation (Attempts-based)\n\n");
-    for(i = 1; i <= 3; i++) {
+int main() {
+    int choice = 0;
 
-        printf("Enter Password: ");
-        scanf("%d", &password);
+    while (choice != 8) {
+        printf("\n====================================================");
+        printf("\n              RULE ENGINE APPLICATION");
+        printf("\n====================================================");
+        printf("\n1. Bank Loan Eligibility (Salary & Credit Score)");
+        printf("\n2. Electricity Bill Calculation (Unit-based)");
+        printf("\n3. Ticket Pricing (Age-based)");
+        printf("\n4. Login Validation (Attempts-based)");
+        printf("\n5. Password Strength Checker");
+        printf("\n6. Simple Discount Calculator");
+        printf("\n7. Weather Advisory");
+        printf("\n8. Exit");
+        printf("\n====================================================");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
 
-        if(password == correctPassword) {
-            printf("Login Allowed\n");
-            sucess =1;
-            break;  }
-        else {
-            printf("Invalid Password\n");
-        }
-    }
-    if(sucess==0)
-    {printf("User Blocked\n");}
+        switch (choice) {
 
-        break;   
-       
-    }
-    case 5:{
-        char pass[100];
-        int len;
-        printf("you choosed 5: Password Strength (Length-based)\n\n");
-        printf("Enter the password must be (above 8 characters):\n\n");
-        scanf("%s",pass);
-        len=strlen(pass);
-        if (len>=8){
-            printf("strong password \n");
-        }
-        else{
-            printf("password is weak\n\n");
-        }
-        break;
+            case 1: {
+                int salary, credit;
 
-    }
-    case 6:{
-        float pur,res;
-        printf("\n\nyou choosed 6: Simple Discount (Purchase amount)\n\n");
-        printf("Enter the purchased amount\n");
-        scanf("%f",&pur);
-        if(pur>=5000){
-            printf("The discount is 20 percent");
-            res=pur-(pur*0.2);
-            printf("final discounted price is %f",res);
-        }
-        else if( pur>=2000 && pur<5000){
-            printf("The discount is 10 percent");
-            res=pur-(pur*0.1);
-            printf("final discounted price is %f",res);
-        }
-        else{
-            printf("No discount \n the final price is %f",pur);
-        }
-        break;
-    }
-    case 7:{
-        int temp;
-        printf("You choosed 7. Weather Advisory(based on temperatutre)\n\n");
-        printf("Enter the temperature in degree celsius:");
-        scanf("%d",&temp);
-        if(temp>35){
-            printf("Weather is HOT\n");
+                printf("\n---------- BANK LOAN ELIGIBILITY ----------\n");
+                printf("Enter your salary: ");
+                scanf("%d", &salary);
+                printf("Enter your credit score: ");
+                scanf("%d", &credit);
 
+                if (salary >= 50000 && credit >= 700) {
+                    printf("\nLoan Approved Successfully!\n");
+                    printf("Reason: Salary >= 50000 and Credit Score >= 700\n");
+                }
+                else if (salary >= 30000) {
+                    printf("\nConditionally Approved.\n");
+                    printf("Reason: Salary is above 30000 but credit score is low.\n");
+                }
+                else {
+                    printf("\nLoan Rejected.\n");
+                    printf("Reason: Salary below 30000.\n");
+                }
+                break;
+            }
+
+            case 2: {
+                int units;
+                float bill;
+
+                printf("\n---------- ELECTRICITY BILL CALCULATOR ----------\n");
+                printf("Enter units consumed: ");
+                scanf("%d", &units);
+
+                if (units <= 100) {
+                    bill = units * 2;
+                    printf("\nRate Applied: Rs. 2 per unit\n");
+                }
+                else if (units <= 300) {
+                    bill = units * 5;
+                    printf("\nRate Applied: Rs. 5 per unit\n");
+                }
+                else {
+                    bill = units * 8;
+                    printf("\nRate Applied: Rs. 8 per unit\n");
+                }
+
+                printf("Total Electricity Bill = Rs. %.2f\n", bill);
+                break;
+            }
+
+            case 3: {
+                int age;
+
+                printf("\n---------- TICKET PRICING ----------\n");
+                printf("Enter age: ");
+                scanf("%d", &age);
+
+                if (age < 12) {
+                    printf("\nChild Ticket Price = Rs. 100\n");
+                }
+                else if (age <= 60) {
+                    printf("\nAdult Ticket Price = Rs. 200\n");
+                }
+                else {
+                    printf("\nSenior Citizen Ticket Price = Rs. 150\n");
+                }
+                break;
+            }
+
+            case 4: {
+                int password;
+                int correctPassword = 1234;
+                int success = 0;
+
+                printf("\n---------- LOGIN VALIDATION ----------\n");
+
+                for (int i = 1; i <= 3; i++) {
+                    printf("Attempt %d - Enter Password: ", i);
+                    scanf("%d", &password);
+
+                    if (password == correctPassword) {
+                        printf("\nLogin Successful! Access Granted.\n");
+                        success = 1;
+                        break;
+                    }
+                    else {
+                        printf("Invalid Password!\n");
+                    }
+                }
+
+                if (success == 0) {
+                    printf("\nUser Blocked after 3 failed attempts.\n");
+                }
+                break;
+            }
+
+            case 5: {
+                char pass[100];
+                int len;
+
+                printf("\n---------- PASSWORD STRENGTH CHECKER ----------\n");
+                printf("Enter password: ");
+                scanf("%s", pass);
+
+                len = strlen(pass);
+
+                if (len >= 8) {
+                    printf("\nStrong Password\n");
+                }
+                else {
+                    printf("\nWeak Password (Minimum 8 characters required)\n");
+                }
+                break;
+            }
+
+            case 6: {
+                float purchase, finalPrice;
+
+                printf("\n---------- DISCOUNT CALCULATOR ----------\n");
+                printf("Enter purchase amount: Rs. ");
+                scanf("%f", &purchase);
+
+                if (purchase >= 5000) {
+                    finalPrice = purchase - (purchase * 0.20);
+                    printf("\nDiscount Applied: 20%%\n");
+                    printf("Final Price = Rs. %.2f\n", finalPrice);
+                }
+                else if (purchase >= 2000) {
+                    finalPrice = purchase - (purchase * 0.10);
+                    printf("\nDiscount Applied: 10%%\n");
+                    printf("Final Price = Rs. %.2f\n", finalPrice);
+                }
+                else {
+                    printf("\nNo Discount Applied.\n");
+                    printf("Final Price = Rs. %.2f\n", purchase);
+                }
+                break;
+            }
+
+            case 7: {
+                int temp;
+
+                printf("\n---------- WEATHER ADVISORY ----------\n");
+                printf("Enter temperature (in Celsius): ");
+                scanf("%d", &temp);
+
+                if (temp > 35) {
+                    printf("\nWeather Status: HOT\n");
+                    printf("Advice: Stay hydrated and avoid direct sunlight.\n");
+                }
+                else if (temp < 15) {
+                    printf("\nWeather Status: COLD\n");
+                    printf("Advice: Wear warm clothes.\n");
+                }
+                else {
+                    printf("\nWeather Status: MODERATE\n");
+                    printf("Advice: Pleasant weather.\n");
+                }
+                break;
+            }
+
+            case 8: {
+                printf("\nThank you for using the Rule Engine Application.\n");
+                printf("Exiting Program...\n");
+                break;
+            }
+
+            default: {
+                printf("\nInvalid Choice! Please enter a valid option (1-8).\n");
+                break;
+            }
         }
-        else if(temp<15){
-            printf("Weather is COLD\n");
-        }
-        else{
-            printf("Weather is Moderate\n");
-        }
-        break;
     }
-    case 8:{
-        printf("press enter to exit from rule engine\n");
-        break;
-    }
-default:
-    printf("\n\nyou exited from operation.....!!!\n\n");
-    printf("\n\n----------------------------------\n\n");
-        break;
-    }
-}
+
     return 0;
 }
